@@ -1,6 +1,10 @@
 # Eventex
 
+
 Sistema de eventos encomendado pela Morena.
+
+[![Build Status](https://travis-ci.org/Riverfount/wttd.svg?branch=master)](https://travis-ci.org/Riverfount/wttd) 
+[![Code Health](https://landscape.io/github/Riverfount/wttd/master/landscape.svg?style=flat)](https://landscape.io/github/Riverfount/wttd/master)
 
 ## Como desenvolver?
 
