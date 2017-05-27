@@ -36,6 +36,7 @@ python manage.py test
 
 ```console
 heroku create minhainstancia
+# Para executar o configu:push se necessário instale o plugin push do Heroku
 heroku config:push
 heroku config:set SECRET_KEY=`python contrib/secret_gen.py`
 heroku config:set DEBUG=False
