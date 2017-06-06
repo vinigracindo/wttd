@@ -1,2 +1,2 @@
--r requirements
-jupyter
+-r requirements.txt
+ipython[notebook]
