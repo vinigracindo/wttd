@@ -6,3 +6,5 @@
 __pycache__
 .ropeproject/
 staticfiles/
+.ipynb_checkpoints/
+

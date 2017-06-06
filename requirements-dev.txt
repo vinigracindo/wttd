@@ -1,0 +1,3 @@
+-r requirements
+jupyter
+django-extensions
