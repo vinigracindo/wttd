@@ -20,7 +20,7 @@ git clone git@github.com:Riverfount/wttd.git
 cd wttd
 python -m virtualenv .wttd
 source .wttd/bin/activate
-pip install -r requiremets.txt
+pip install -r requiremets-dev.txt
 cp contrib/env-sample .env
 python manage.py test
 ```
