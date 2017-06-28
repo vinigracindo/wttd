@@ -38,6 +38,9 @@ class TalkModelTest(TestCase):
     def test_str(self):
         self.assertEqual('Título da Palestra', str(self.talk))
 
+    def test_ordering(self):
+        self.assertListEqual(['start'], Talk._meta.ordering)
+
 
 class PeriodManagerTest(TestCase):
     def setUp(self):
@@ -61,9 +64,9 @@ class PeriodManagerTest(TestCase):
 class CourseModelTest(TestCase):
     def setUp(self):
         self.course = Course.objects.create(title = 'Título do Curso',
-                                            start = '09:00',
-                                            description = 'Descrição do curso.',
-                                            slots = 20)
+                                               start = '09:00',
+                                               description = 'Descrição do curso.',
+                                               slots = 20)
 
     def test_create(self):
         self.assertTrue(Course.objects.exists())
@@ -80,3 +83,6 @@ class CourseModelTest(TestCase):
 
     def test_manager(self):
         self.assertIsInstance(Course.objects, PeriodManager)
+
+    def test_ordering(self):
+        self.assertListEqual(['start'], Course._meta.ordering)
