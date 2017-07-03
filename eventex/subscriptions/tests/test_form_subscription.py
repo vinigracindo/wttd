@@ -52,7 +52,7 @@ class SubscriptionFormTest(TestCase):
 
     def make_validated_form(self, **kwargs):
         valid = dict(name = 'Vicente Marçal',
-                     cpf = '12345678901',
+                     cpf = '11144477735',
                      email = 'vicente.marcal@gmail.com',
                      phone = '69-98114-6191')
         data = dict(valid, **kwargs)
