@@ -1,13 +1,13 @@
 from django.core.exceptions import ValidationError
 
-from eventex.subscriptions.cpf_validator import cpf_is_valid
+from eventex.subscriptions.cpf_validator import cpf_is_valid, cpf_has_correct_length, cpf_is_digits
 
 
 def validate_cpf(value):
-    if not value.isdigit():
-        raise ValidationError('CFP deve conter apenas números.', 'digits')
+    if not cpf_is_digits(value):
+        raise ValidationError('CPF deve conter apenas números.', 'digits')
 
-    if len(value) != 11:
+    if cpf_has_correct_length(value):
         raise ValidationError('CPF deve ter 11 números.', 'length')
 
     if cpf_is_valid(value):
