@@ -64,9 +64,9 @@ class PeriodManagerTest(TestCase):
 class CourseModelTest(TestCase):
     def setUp(self):
         self.course = Course.objects.create(title = 'Título do Curso',
-                                               start = '09:00',
-                                               description = 'Descrição do curso.',
-                                               slots = 20)
+                                            start = '09:00',
+                                            description = 'Descrição do curso.',
+                                            slots = 20)
 
     def test_create(self):
         self.assertTrue(Course.objects.exists())
