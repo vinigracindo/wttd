@@ -1,2 +1,12 @@
 python-targets:
   - 3
+
+uses:
+  - django
+
+pep8:
+  full: true
+
+ignore-paths:
+   - staticfiles
+   - eventex/core/static
