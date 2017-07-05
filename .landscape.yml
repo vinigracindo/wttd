@@ -4,9 +4,6 @@ python-targets:
 uses:
   - django
 
-pep8:
-  full: true
-
 ignore-paths:
    - staticfiles
    - eventex/core/static
