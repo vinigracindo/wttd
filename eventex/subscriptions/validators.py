@@ -14,5 +14,5 @@ def validate_cpf(value):
     if cpf_is_valid(value):
         raise ValidationError('Dígito do CPF não confere, verificar digitação', 'invalid')
 
-     if cpf_is_valid(value):
+    if cpf_is_valid(value):
         raise ValidationError('Dígito do CPF não confere, verificar digitação', 'invalid')
