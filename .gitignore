@@ -2,8 +2,6 @@
 .idea
 .wttd
 *.sqlite3
-*.pyc
-__pycache__
 .ropeproject/
 staticfiles/
 .ipynb_checkpoints/
