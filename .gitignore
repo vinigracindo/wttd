@@ -8,3 +8,7 @@ staticfiles/
 .coverage
 htmlcov/
 ativaven.sh
+*.pyc
+eventex/__pycache__/
+eventex/core/__pycache__/
+eventex/subscriptions/__pycache__/
