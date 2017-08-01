@@ -1,4 +1,4 @@
 -r requirements.txt
-ipython[notebook]
-coverage
-coveralls
+ipython[notebook]==6.1.0
+coverage==4.4.1
+coveralls==1.1
