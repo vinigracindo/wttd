@@ -46,15 +46,15 @@ INSTALLED_APPS = (
     'eventex.subscriptions.apps.SubscriptionsConfig',
 )
 
-MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
+MIDDLEWARE_CLASSES = ( 'django.contrib.sessions.middleware.SessionMiddleware', 
+    'django.middleware.common.CommonMiddleware', 
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 )
 
 ROOT_URLCONF = 'eventex.urls'
@@ -116,4 +116,11 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast = bool)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
-
+# Rollbar configuration
+ROLLBAR = {
+    'access_token': 'd4a0775525854a5ca105bcbec450a4f6',
+    'environment': 'development' if DEBUG else 'production',
+    'root': BASE_DIR,
+}
+import rollbar
+rollbar.init(**ROLLBAR)
