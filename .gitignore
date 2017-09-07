@@ -12,3 +12,10 @@ eventex/__pycache__/
 eventex/core/__pycache__/
 eventex/subscriptions/__pycache__/
 .env
+pre-requeriments.txt
+/accessKeys.csv
+accessKeys.csv
+eventex/core/migrations/__pycache__/
+eventex/core/tests/__pycache__/
+eventex/subscriptions/migrations/__pycache__/
+eventex/subscriptions/tests/__pycache__/
