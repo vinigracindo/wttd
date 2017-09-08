@@ -111,36 +111,26 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast = bool)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
-if DEBUG:
+# STORAGE CONFIGURATION
+# ------------------------------------------------------------------------------
+# Uploaded Media Files
+# ------------------------------------------------------------------------------
 
-    # Static files (CSS, JavaScript, Images)
-    # https://docs.djangoproject.com/en/1.8/howto/static-files/
+AWS_DEFAULT_ACL = ''
+AWS_ACCESS_KEY_ID = config('DJANGO_AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('DJANGO_AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('DJANGO_AWS_STORAGE_BUCKET_NAME')
+AWS_AUTO_CREATE_BUCKET = True
+AWS_QUERYSTRING_AUTH = False
 
-    STATIC_URL = '/static/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = config('STATIC_URL', default='/static/')
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-else:
+# AWS cache settings, don't change unless you know what you're doing:
+AWS_EXPIRY = 60 * 60 * 24 * 7
 
-    # STORAGE CONFIGURATION
-    # ------------------------------------------------------------------------------
-    # Uploaded Media Files
-    # ------------------------------------------------------------------------------
-
-    AWS_DEFAULT_ACL = ''
-    AWS_ACCESS_KEY_ID = config('DJANGO_AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = config('DJANGO_AWS_SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME = config('DJANGO_AWS_STORAGE_BUCKET_NAME')
-    AWS_AUTO_CREATE_BUCKET = True
-    AWS_QUERYSTRING_AUTH = False
-
-    STATIC_URL = config('STATIC_URL', default='/static/')
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-    # AWS cache settings, don't change unless you know what you're doing:
-    AWS_EXPIRY = 60 * 60 * 24 * 7
-
-    # URL that handles the media served from MEDIA_ROOT, used for managing
-    # stored files.
-    MEDIA_URL = f'https://{STATIC_URL}'
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# URL that handles the media served from MEDIA_ROOT, used for managing
+# stored files.
+MEDIA_URL = f'https://{STATIC_URL}'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
