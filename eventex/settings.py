@@ -15,7 +15,6 @@ import os
 from decouple import config, Csv
 from dj_database_url import parse as dburl
 
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
  
@@ -112,27 +111,45 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 
-# STORAGE CONFIGURATION
-# ------------------------------------------------------------------------------
-# Uploaded Media Files
-# ------------------------------------------------------------------------------
+if DEBUG:
 
-AWS_DEFAULT_ACL = ''
-AWS_ACCESS_KEY_ID = config('DJANGO_AWS_ACCESS_KEY_ID', default='')
-AWS_SECRET_ACCESS_KEY = config('DJANGO_AWS_SECRET_ACCESS_KEY', default='')
-AWS_STORAGE_BUCKET_NAME = config('DJANGO_AWS_STORAGE_BUCKET_NAME', default='')
-AWS_AUTO_CREATE_BUCKET = True
-AWS_QUERYSTRING_AUTH = False
+    # Static files (CSS, JavaScript, Images)
+    # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_URL = config('STATIC_URL', default='/static/')
-#STATIC_ROOT = config('STATIC_ROOT', default = os.path.join(BASE_DIR, 'staticfiles'))
-STATICFILES_STORAGE = config('STATICFILES_STORAGE', default='')
+    STATIC_URL = '/static/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+else:
 
-# AWS cache settings, don't change unless you know what you're doing:
-AWS_EXPIRY = 60 * 60 * 24 * 7
+    # STORAGE CONFIGURATION
+    # ------------------------------------------------------------------------------
+    # Uploaded Media Files
+    # ------------------------------------------------------------------------------
 
-# URL that handles the media served from MEDIA_ROOT, used for managing
-# stored files.
-MEDIA_URL = f'https://{STATIC_URL}'
-DEFAULT_FILE_STORAGE = config('STATICFILES_STORAGE', default='')
+    AWS_ACCESS_KEY_ID = config('DJANGO_AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = config('DJANGO_AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = config('DJANGO_AWS_STORAGE_BUCKET_NAME')
+    AWS_AUTO_CREATE_BUCKET = True
+    AWS_QUERYSTRING_AUTH = False
+
+    # AWS cache settings, don't change unless you know what you're doing:
+    AWS_EXPIRY = 60 * 60 * 24 * 7
+
+    # TODO See: https://github.com/jschneier/django-storages/issues/47
+    # Revert the following and use str after the above-mentioned bug is fixed in
+    # either django-storage-redux or boto
+    control = 'max-age=%d, s-maxage=%d, must-revalidate' % (AWS_EXPIRY, AWS_EXPIRY)
+    AWS_HEADERS = {
+        'Cache-Control': bytes(control, encoding='latin-1')
+    }
+
+    # URL that handles the media served from MEDIA_ROOT, used for managing
+    # stored files.
+    MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/'
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+    # Static Assets
+    # ------------------------
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 
