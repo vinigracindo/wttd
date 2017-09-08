@@ -42,7 +42,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'test_without_migrations',
     'django_extensions',
-    'storages',
     'eventex.core',
     'eventex.subscriptions.apps.SubscriptionsConfig',
 )
@@ -124,6 +123,8 @@ else:
     # ------------------------------------------------------------------------------
     # Uploaded Media Files
     # ------------------------------------------------------------------------------
+
+    INSTALLED_APPS += 'storages',
 
     AWS_ACCESS_KEY_ID = config('DJANGO_AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = config('DJANGO_AWS_SECRET_ACCESS_KEY')
