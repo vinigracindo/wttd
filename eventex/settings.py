@@ -150,8 +150,8 @@ else:
     STATIC_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/'
 
     # Static Assets
-    # ------------------------
+    # ------------------------------------------------------------------------------
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
-
+TEST_RUNNER = 'rainbowtests.test.runner.RainbowDiscoverRunner'
