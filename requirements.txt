@@ -1,11 +1,11 @@
 boto3==1.4.7
-botocore==1.7.8
+botocore==1.7.9
 certifi==2017.7.27.1
 chardet==3.0.4
 dj-database-url==0.4.2
 dj-static==0.0.6
 Django==1.11.5
-django-extensions==1.9.0
+django-extensions==1.9.1
 django-storages==1.6.5
 django-test-without-migrations==0.6
 docopt==0.6.2
