@@ -7,3 +7,6 @@ uses:
 ignore-paths:
    - staticfiles
    - eventex/core/static
+   - eventex/wsgi.py
+   - eventex/core/migrations
+   - eventex/core/admin.py
