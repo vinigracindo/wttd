@@ -135,7 +135,6 @@ else:
     # AWS cache settings, don't change unless you know what you're doing:
     AWS_EXPIRY = 60 * 60 * 24 * 7
 
-    # TODO See: https://github.com/jschneier/django-storages/issues/47
     # Revert the following and use str after the above-mentioned bug is fixed in
     # either django-storage-redux or boto
     control = 'max-age=%d, s-maxage=%d, must-revalidate' % (AWS_EXPIRY, AWS_EXPIRY)
