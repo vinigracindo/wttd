@@ -3,10 +3,11 @@
 
 Sistema de eventos encomendado pela Morena.
 
-[![Build Status](https://travis-ci.org/Riverfount/wttd.svg?branch=master)](https://travis-ci.org/Riverfount/wttd) 
+[![Build Status](https://travis-ci.org/Riverfount/wttd.svg?branch=master)](https://travis-ci.org/Riverfount/wttd)
 [![Code Health](https://landscape.io/github/Riverfount/wttd/master/landscape.svg?style=flat)](https://landscape.io/github/Riverfount/wttd/master)
 [![Coverage Status](https://coveralls.io/repos/github/Riverfount/wttd/badge.svg?branch=master)](https://coveralls.io/github/Riverfount/wttd?branch=master)
 [![Updates](https://pyup.io/repos/github/Riverfount/wttd/shield.svg)](https://pyup.io/repos/github/Riverfount/wttd/)
+[![Requirements Status](https://requires.io/github/Riverfount/wttd/requirements.svg?branch=master)](https://requires.io/github/Riverfount/wttd/requirements/?branch=master)
 
 ## Como desenvolver?
 
