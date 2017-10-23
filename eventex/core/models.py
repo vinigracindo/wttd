@@ -4,11 +4,11 @@ from eventex.core.managers import KindQuerySet, PeriodManager
 
 
 class Speaker(models.Model):
-    name = models.CharField('nome', max_length = 255)
+    name = models.CharField('nome', max_length=255)
     slug = models.SlugField('slug')
     photo = models.URLField('foto')
-    website = models.URLField('website', blank = True)
-    description = models.TextField('descrição', blank = True)
+    website = models.URLField('website', blank=True)
+    description = models.TextField('descrição', blank=True)
 
     class Meta:
         verbose_name = 'palestrante'
@@ -18,7 +18,7 @@ class Speaker(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return r('speaker_detail', slug = self.slug)
+        return r('speaker_detail', slug=self.slug)
 
 
 class Contact(models.Model):
@@ -28,9 +28,9 @@ class Contact(models.Model):
         (EMAIL, 'Email'),
         (PHONE, 'Telefone'),
     )
-    speaker = models.ForeignKey('Speaker', verbose_name = 'palestrante')
-    kind = models.CharField('tipo',max_length = 1, choices = KINDS)
-    value = models.CharField('valor',max_length = 255)
+    speaker = models.ForeignKey('Speaker', verbose_name='palestrante')
+    kind = models.CharField('tipo', max_length=1, choices=KINDS)
+    value = models.CharField('valor', max_length=255)
 
     objects = KindQuerySet.as_manager()
 
@@ -43,10 +43,10 @@ class Contact(models.Model):
 
 
 class Talk(models.Model):
-    title = models.CharField('título', max_length = 200)
-    start = models.TimeField('início', blank = True, null = True)
-    description = models.TextField('descrição', blank = True)
-    speakers = models.ManyToManyField('Speaker', verbose_name = 'palestrantes', blank = True)
+    title = models.CharField('título', max_length=200)
+    start = models.TimeField('início', blank=True, null=True)
+    description = models.TextField('descrição', blank=True)
+    speakers = models.ManyToManyField('Speaker', verbose_name='palestrantes', blank=True)
 
     objects = PeriodManager()
 

@@ -6,10 +6,10 @@ from eventex.subscriptions.admin import SubscriptionModelAdmin, Subscription, ad
 class SubscriptionModelAdminTest(TestCase):
     def setUp(self):
         Subscription.objects.create(
-            name = 'Vicente Marçal',
-            cpf = '12345678901',
-            email = 'vicente.marcal@gmail.com',
-            phone = '69-98114-6191')
+            name='Vicente Marçal',
+            cpf='12345678901',
+            email='vicente.marcal@gmail.com',
+            phone='69-98114-6191')
         self.model_admin = SubscriptionModelAdmin(Subscription, admin.site)
 
     def test_has_action(self):
@@ -19,7 +19,7 @@ class SubscriptionModelAdminTest(TestCase):
     def test_mark_all(self):
         """It should mark all selected subscriptions as paid."""
         self.call_action()
-        self.assertEqual(1, Subscription.objects.filter(paid = True).count())
+        self.assertEqual(1, Subscription.objects.filter(paid=True).count())
 
     def test_message(self):
         """It should send a message to the user."""

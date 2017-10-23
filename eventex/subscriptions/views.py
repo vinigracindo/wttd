@@ -3,9 +3,8 @@ from eventex.subscriptions.forms import SubscriptionForm
 from eventex.subscriptions.mixins import EmailCreateView
 from eventex.subscriptions.models import Subscription
 
-new = EmailCreateView.as_view(model = Subscription,
-                              form_class = SubscriptionForm,
-                              email_subject = 'Confirmação de Inscrição')
+new = EmailCreateView.as_view(model=Subscription,
+                              form_class=SubscriptionForm,
+                              email_subject='Confirmação de Inscrição')
 
-detail = DetailView.as_view(model = Subscription)
-
+detail = DetailView.as_view(model=Subscription)

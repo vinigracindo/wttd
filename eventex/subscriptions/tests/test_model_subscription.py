@@ -7,10 +7,10 @@ from eventex.subscriptions.models import Subscription
 class SubscriptionModelTest(TestCase):
     def setUp(self):
         self.obj = Subscription(
-            name = 'Vicente Marçal',
-            cpf = '1234567899',
-            email = 'vicente.marcal@gmail.com',
-            phone = '69-981146191'
+            name='Vicente Marçal',
+            cpf='1234567899',
+            email='vicente.marcal@gmail.com',
+            phone='69-981146191'
         )
         self.obj.save()
 

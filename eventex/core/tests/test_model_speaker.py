@@ -6,11 +6,11 @@ from django.shortcuts import resolve_url as r
 class SpeakerModelTest(TestCase):
     def setUp(self):
         self.speaker = Speaker.objects.create(
-            name = 'Grace Hopper',
-            slug = 'grace-hopper',
-            photo = 'http://hbn.link/hopper-pic',
-            website = 'http://hbn.link/hopper-site',
-            description = 'Progamadora e almirante'
+            name='Grace Hopper',
+            slug='grace-hopper',
+            photo='http://hbn.link/hopper-pic',
+            website='http://hbn.link/hopper-site',
+            description='Progamadora e almirante'
         )
 
     def test_create(self):
@@ -29,5 +29,5 @@ class SpeakerModelTest(TestCase):
         self.assertEqual('Grace Hopper', str(self.speaker))
 
     def test_get_absolute_url(self):
-        url = r('speaker_detail', slug = self.speaker.slug)
+        url = r('speaker_detail', slug=self.speaker.slug)
         self.assertEqual(url, self.speaker.get_absolute_url())

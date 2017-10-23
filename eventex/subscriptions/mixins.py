@@ -19,7 +19,7 @@ class EmailCreateMixin:
         context = self.get_email_context_data()
 
         body = render_to_string(template_name, context)
-        return mail.send_mail(subject, body, from_,[from_, to])
+        return mail.send_mail(subject, body, from_, [from_, to])
 
     def get_email_template_name(self):
         if self.email_template_name:

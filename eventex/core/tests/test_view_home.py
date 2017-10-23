@@ -26,7 +26,7 @@ class HomeTest(TestCase):
             f'href="{r("speaker_detail", slug="grace-hopper")}"',
             'Grace Hopper',
             'http://hbn.link/hopper-pic',
-            f'href="{r("speaker_detail", slug = "alan-turing")}"',
+            f'href="{r("speaker_detail", slug="alan-turing")}"',
             'Alan Turing',
             'http://hbn.link/turing-pic'
         ]
@@ -41,4 +41,3 @@ class HomeTest(TestCase):
     def test_talk_link(self):
         expected = f'href="{r("talk_list")}"'
         self.assertContains(self.response, expected)
-
