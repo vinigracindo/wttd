@@ -8,6 +8,7 @@ Sistema de eventos encomendado pela Morena.
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/91639a4dd00449f68cd213273ccdbbca)](https://www.codacy.com/app/Riverfount/wttd?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Riverfount/wttd&amp;utm_campaign=Badge_Grade)
 [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/91639a4dd00449f68cd213273ccdbbca)](https://www.codacy.com/app/Riverfount/wttd?utm_source=github.com&utm_medium=referral&utm_content=Riverfount/wttd&utm_campaign=Badge_Coverage)
 [![codecov](https://codecov.io/gh/Riverfount/wttd/branch/master/graph/badge.svg)](https://codecov.io/gh/Riverfount/wttd)
+[![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/codeclimate/codeclimate)
 [![Updates](https://pyup.io/repos/github/Riverfount/wttd/shield.svg)](https://pyup.io/repos/github/Riverfount/wttd/)
 [![Requirements Status](https://requires.io/github/Riverfount/wttd/requirements.svg?branch=master)](https://requires.io/github/Riverfount/wttd/requirements/?branch=master)
 
