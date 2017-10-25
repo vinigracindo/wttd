@@ -3,11 +3,14 @@
 
 Sistema de eventos encomendado pela Morena.
 
-[![Build Status](https://travis-ci.org/Riverfount/wttd.svg?branch=master)](https://travis-ci.org/Riverfount/wttd)
 [![Code Health](https://landscape.io/github/Riverfount/wttd/master/landscape.svg?style=flat)](https://landscape.io/github/Riverfount/wttd/master)
-[![Coverage Status](https://coveralls.io/repos/github/Riverfount/wttd/badge.svg?branch=master)](https://coveralls.io/github/Riverfount/wttd?branch=master)
+[![Build Status](https://travis-ci.org/Riverfount/wttd.svg?branch=master)](https://travis-ci.org/Riverfount/wttd)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/91639a4dd00449f68cd213273ccdbbca)](https://www.codacy.com/app/Riverfount/wttd?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Riverfount/wttd&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/91639a4dd00449f68cd213273ccdbbca)](https://www.codacy.com/app/Riverfount/wttd?utm_source=github.com&utm_medium=referral&utm_content=Riverfount/wttd&utm_campaign=Badge_Coverage)
+[![codecov](https://codecov.io/gh/Riverfount/wttd/branch/master/graph/badge.svg)](https://codecov.io/gh/Riverfount/wttd)
 [![Updates](https://pyup.io/repos/github/Riverfount/wttd/shield.svg)](https://pyup.io/repos/github/Riverfount/wttd/)
 [![Requirements Status](https://requires.io/github/Riverfount/wttd/requirements.svg?branch=master)](https://requires.io/github/Riverfount/wttd/requirements/?branch=master)
+
 
 ## Como desenvolver?
 
