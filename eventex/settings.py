@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
 from decouple import config, Csv
 from dj_database_url import parse as dburl
 
@@ -154,3 +155,15 @@ else:
 
 
 TEST_RUNNER = 'rainbowtests.test.runner.RainbowDiscoverRunner'
+
+# Seting Up Sentry
+
+SENTRY_DSN = config('SENTRY_DSN', default=None)
+if SENTRY_DSN:
+    INSTALLED_APPS += (
+        'raven.contrib.django.raven_compat',
+    )
+    RAVEN_CONFIG = {
+        'dsn': SENTRY_DSN,
+        'release': os.environ.get('HEROKU_SLUG_COMMIT', ''),
+    }

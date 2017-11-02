@@ -1,18 +1,26 @@
 language: python
 python:
-  - "3.6.1"
-install:
-  - cp contrib/env-sample .env
-  - pip install -q -r requirements-dev.txt
-script:
-  - flake8 .
-  - coverage run --source=eventex manage.py test -v 3
-after_success:
-  - coveralls
-  - codecov
+- 3.6.1
+services: postgresql
 addons:
   code_climate:
     repo_token: 35fd1132d28ff197b68fc25dbc29376288d28ba568027eb4ff6bd0b0574ab76b
   codacy:
     repo_token: 7b453773c82846a1bed6c4b96bdd0563
-
+install:
+- cp contrib/env-sample .env
+- pip install -q -r requirements-dev.txt
+before_script:
+- psql -c "CREATE DATABASE travisci;" -U postgres
+- python manage.py migrate --noinput
+- python manage.py collectstatic
+script:
+- flake8 .
+- coverage run --source=eventex manage.py test -v 3
+after_success:
+#- coveralls
+- codecov
+notifications:
+  slack:
+    rooms:
+      secure: 28p0JeYLRgEmh7npcgPlZjoTX+HFVDTVpSHWTcJuhkrnIb5tPtbje3mtIZMC5Ta/hU7NtrnNFwDBeT0hhvYih877f1GJTmCFcSNxqjcJHBcmrXMidO7zfFntw2+5TZkGWCEqthgfMN6qPdTsyatsmQ9Gj+tVDzsPQwzgtMquti3N9cCPhVCv0AxsH5p1Wx6mkPYGZj0F06+vjY81OjLwLq1xTvlvgToT6avVswipr6MK7R8UqwYUUR5fe88E9gsDQPvf/7N8c67ivo4fD1yftGyXkM01YNP16BRZhGIPC4ODDiA8tLM4Mv4lHAfIyZRqe07NzFCkEKle1Y9oTUnO9HP+Ce+uVPbTEATyADCQK/CspnLqmTjcbL0A2QPIvqC6WATUVBQz4aqGtt+lVp0gJsHhK6wPRpbm4zMjUVolanzR46NiZEDcmJdre5MNMRL12qWqyep/5Lm1hn760QntVD5/mz/61iHg9ZoTI7buhHbxYG8HTuf81Cu3r0Xw/giaDB0nYTriTrm0/pDUrrygZhgGppTrFYX8VJIX1PeJA1dXZGBanUFRbWUlg+7k5xHjiAjJbT+CSdmEU9AEBIFYEYCoPvekPLlLKrsOwVgPGLWsQn9Rr91m7MZlGMqxS8GpeDDjiKVcH7q+pjcW9JNu/w0ZuFk+xV9kYZs0xumpUQA=
