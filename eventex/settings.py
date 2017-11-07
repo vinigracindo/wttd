@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-
 from decouple import config, Csv
 from dj_database_url import parse as dburl
 
@@ -34,18 +33,19 @@ DEFAULT_FROM_EMAIL = 'contato@eventex.com.br'
 
 # Application definition
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'collectfast',
     'django.contrib.staticfiles',
     'test_without_migrations',
     'django_extensions',
     'eventex.core',
     'eventex.subscriptions.apps.SubscriptionsConfig',
-)
+]
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -111,49 +111,55 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 
-if DEBUG:
+# if DEBUG:
+#
+#     # Static files (CSS, JavaScript, Images)
+#     # https://docs.djangoproject.com/en/1.8/howto/static-files/
+#
+#     STATIC_URL = '/static/'
+#     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# else:
 
-    # Static files (CSS, JavaScript, Images)
-    # https://docs.djangoproject.com/en/1.8/howto/static-files/
+# STORAGE CONFIGURATION
+# ------------------------------------------------------------------------------
+# Uploaded Media Files
+# ------------------------------------------------------------------------------
 
-    STATIC_URL = '/static/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-else:
+INSTALLED_APPS.append('storages'),
+INSTALLED_APPS.append('s3_folder_storage',)
 
-    # STORAGE CONFIGURATION
-    # ------------------------------------------------------------------------------
-    # Uploaded Media Files
-    # ------------------------------------------------------------------------------
+AWS_ACCESS_KEY_ID = config('DJANGO_AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('DJANGO_AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('DJANGO_AWS_STORAGE_BUCKET_NAME')
+AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400', }
+AWS_PRELOAD_METADATA = True
+AWS_AUTO_CREATE_BUCKET = True
+AWS_QUERYSTRING_AUTH = False
 
-    INSTALLED_APPS += 'storages',
+# AWS cache settings, don't change unless you know what you're doing:
+AWS_EXPIRY = 60 * 60 * 24 * 7
 
-    AWS_ACCESS_KEY_ID = config('DJANGO_AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = config('DJANGO_AWS_SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME = config('DJANGO_AWS_STORAGE_BUCKET_NAME')
-    AWS_AUTO_CREATE_BUCKET = True
-    AWS_QUERYSTRING_AUTH = False
+# Revert the following and use str after the above-mentioned bug is fixed in
+# either django-storage-redux or boto
+control = 'max-age=%d, s-maxage=%d, must-revalidate' % (AWS_EXPIRY, AWS_EXPIRY)
 
-    # AWS cache settings, don't change unless you know what you're doing:
-    AWS_EXPIRY = 60 * 60 * 24 * 7
+# Upload Media Folder
+DEFAULT_FILE_STORAGE = 's3_folder_storage.s3.DefaultStorage'
+DEFAULT_S3_PATH = "media"
+MEDIA_ROOT = '/%s/' % DEFAULT_S3_PATH
+MEDIA_URL = '//s3.amazonaws.com/%s/media/' % AWS_STORAGE_BUCKET_NAME
 
-    # Revert the following and use str after the above-mentioned bug is fixed in
-    # either django-storage-redux or boto
-    control = 'max-age=%d, s-maxage=%d, must-revalidate' % (AWS_EXPIRY, AWS_EXPIRY)
-    AWS_HEADERS = {
-        'Cache-Control': bytes(control, encoding='latin-1')
-    }
+# Static Assets
+# ------------------------------------------------------------------------------
+STATICFILES_STORAGE = 's3_folder_storage.s3.StaticStorage'
+STATIC_S3_PATH = "static"
+STATIC_ROOT = "/%s/" % STATIC_S3_PATH
+STATIC_URL = '//s3.amazonaws.com/%s/static/' % AWS_STORAGE_BUCKET_NAME
+ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
-    # URL that handles the media served from MEDIA_ROOT, used for managing
-    # stored files.
-    # MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/media/'
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    STATIC_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/'
+# ------------------------------------------------------------------------------
 
-    # Static Assets
-    # ------------------------------------------------------------------------------
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-
+# Set colors to test message
 TEST_RUNNER = 'rainbowtests.test.runner.RainbowDiscoverRunner'
 
 # Seting Up Sentry
