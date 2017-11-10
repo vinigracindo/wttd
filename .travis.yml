@@ -1,25 +1,32 @@
 language: python
 python:
 - 3.6.1
+
 services: postgresql
+
 addons:
   code_climate:
     repo_token: 35fd1132d28ff197b68fc25dbc29376288d28ba568027eb4ff6bd0b0574ab76b
   codacy:
     repo_token: 7b453773c82846a1bed6c4b96bdd0563
+
 install:
 - cp contrib/env-sample .env
-- pip install -q -r requirements-dev.txt
+- pip install -q -r requirements-dev.txt codecov
+
 before_script:
 - psql -c "CREATE DATABASE travisci;" -U postgres
 - python manage.py migrate --noinput
 - python manage.py collectstatic --noinput --no-post-process
+
 script:
 - flake8 .
 - coverage run --source=eventex manage.py test -v 3
+
 after_success:
 #- coveralls
 - codecov
+
 notifications:
   slack:
     rooms:
