@@ -32,7 +32,7 @@ cp contrib/env-sample .env
 python manage.py test
 ```
 
-## Como fazer o deploy?
+## Como fazer o deploy no Heroku?
 
 1. Crie uma instância no Heroku;
 2. Envie as configurações para o Heroku;
