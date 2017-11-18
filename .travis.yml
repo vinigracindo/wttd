@@ -5,15 +5,12 @@ python:
 services: postgresql
 
 addons:
-  postgresql: '9.5'
-  code_climate:
-    repo_token: 35fd1132d28ff197b68fc25dbc29376288d28ba568027eb4ff6bd0b0574ab76b
-  codacy:
-    repo_token: 7b453773c82846a1bed6c4b96bdd0563
+  postgresql: '9.6'
 
 install:
 - cp contrib/env-sample .env
 - pip install -q -r requirements-dev.txt
+
 before_script:
 - psql -c "CREATE DATABASE travisci;" -U postgres
 - python manage.py migrate --noinput
