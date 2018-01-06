@@ -1,4 +1,4 @@
-boto3==1.5.7
+boto3==1.5.9
 botocore==1.8.21
 Collectfast==0.6.0
 django-s3-folder-storage==0.5
