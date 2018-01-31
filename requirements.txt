@@ -1,4 +1,4 @@
-certifi==2017.11.5
+certifi==2018.1.18
 chardet==3.0.4
 dj-database-url==0.4.2
 dj-static==0.0.6
@@ -12,7 +12,7 @@ mccabe==0.6.1
 psycopg2==2.7.3.2
 python-decouple==3.1
 pytz==2017.3
-raven==6.4.0
+raven==6.5.0
 requests==2.18.4
 static3==0.7.0
 urllib3==1.22
