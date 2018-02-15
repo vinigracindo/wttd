@@ -1,6 +1,6 @@
 language: python
 python:
-- 3.6.1
+- 3.6.4
 services: postgresql
 addons:
   postgresql: '9.6'
