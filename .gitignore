@@ -1,4 +1,5 @@
 .idea
+credentials_of_aws.txt
 .wttd
 *.sqlite3
 .ropeproject/
