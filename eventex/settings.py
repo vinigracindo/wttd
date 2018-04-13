@@ -55,6 +55,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 )
 
 ROOT_URLCONF = 'eventex.urls'
@@ -168,3 +169,10 @@ if SENTRY_DSN:
         'dsn': SENTRY_DSN,
         'release': os.environ.get('HEROKU_SLUG_COMMIT', ''),
     }
+
+ROLLBAR = {
+    'access_token': config('ROLLBAR_TOKEN'),
+    'environment': 'development' if DEBUG else 'production',
+    'branch': 'master',
+    'root': os.getcwd(),
+}
