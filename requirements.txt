@@ -10,7 +10,7 @@ docopt==0.6.2
 gunicorn==19.8.1
 idna==2.7
 mccabe==0.6.1
-psycopg2-binary==2.7.4
+psycopg2-binary==2.7.5
 psycopg2==2.7.4
 python-decouple==3.1
 pytz==2018.4
