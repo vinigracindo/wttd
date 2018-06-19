@@ -9,6 +9,7 @@ Sistema de eventos encomendado pela Morena.
 [![Updates](https://pyup.io/repos/github/Riverfount/wttd/shield.svg)](https://pyup.io/repos/github/Riverfount/wttd/)
 
 
+
 ## Como desenvolver?
 
 1. Clone o repositório;
