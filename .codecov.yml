@@ -1,7 +1,6 @@
 codecov:
   notify:
     require_ci_to_pass: yes
-  token: c59f90ef-8446-43e6-9e9b-776d134edfc8
 
 coverage:
   precision: 2

@@ -13,18 +13,14 @@ Sistema de eventos encomendado pela Morena.
 ## Como desenvolver?
 
 1. Clone o repositório;
-2. Crie um _virtualenv_ com Python 3.6.1;
-3. Ative o _virtualenv_;
-4. Instale as dependências;
-5. Configure a instância de desenvolvimento com o _.env_;
-6. Execute os testes.
+2. Instale as dependências com Pipenv;
+3. Configure a instância de desenvolvimento com o _.env_;
+4. Execute os testes.
 
 ```console
 git clone git@github.com:Riverfount/wttd.git
 cd wttd
-python -m virtualenv .wttd
-source .wttd/bin/activate
-pip install -r requiremets-dev.txt
+pipenv install --dev
 cp contrib/env-sample .env
 python manage.py test
 ```
@@ -44,6 +40,6 @@ heroku create minhainstancia
 heroku config:push
 heroku config:set SECRET_KEY=`python contrib/secret_gen.py`
 heroku config:set DEBUG=False
-# configuro o e-mail (dependerá de sua instância)
+# configuração do e-mail dependerá de sua instância no heroku
 git push heroku master --force
 ```
