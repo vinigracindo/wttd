@@ -1,22 +1,28 @@
 language: python
+dist: xenial
+sudo: true
 python:
-- 3.6.4
+- 3.7
 services: postgresql
 addons:
   postgresql: '9.6'
 before_script:
 - psql -c "CREATE DATABASE travisci;" -U postgres
-- python manage.py migrate --noinput
-- python manage.py collectstatic --noinput --no-post-process
+- pipenv run python manage.py migrate --noinput
+- pipenv run python manage.py collectstatic --noinput --no-post-process
 env:
-- DATABASE_URL=postgres://postgres@localhost/travisci
+  global:
+    - PIPENV_IGNORE_VIRTUALENV=1
+    - PIPENV_VENV_IN_PROJECT=1
+    - PIPENV_IGNORE_VIRTUALENVS=1
+    - DATABASE_URL=postgres://postgres@localhost/travisci
 install:
 - cp contrib/env-sample .env
-- pip install pipenv codecov
-- pipenv install --dev
+- pip install pipenv
+- pipenv sync --dev
 script:
-- flake8 .
-- coverage run --source=eventex manage.py test -v 3
+- pipenv run flake8 .
+- pipenv run coverage run --source=eventex manage.py test -v 3
 after_success:
 - codecov --token=c59f90ef-8446-43e6-9e9b-776d134edfc8
 wttd-notifications:
