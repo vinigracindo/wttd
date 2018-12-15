@@ -22,7 +22,7 @@ install:
 - pipenv sync --dev
 script:
 - pipenv run flake8 .
-- pipenv run coverage run --source=eventex manage.py test -v 3
+- pipenv run pytest
 after_success:
 - pipenv run codecov --token=c59f90ef-8446-43e6-9e9b-776d134edfc8
 wttd-notifications:

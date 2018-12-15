@@ -25,6 +25,7 @@ codecov = "*"
 coveralls = "*"
 django-rainbowtests = "*"
 rollbar = "*"
+pytest-django = "*"
 
 [requires]
 python_version = "3.7"
