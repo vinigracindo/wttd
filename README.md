@@ -5,7 +5,6 @@ Sistema de eventos encomendado pela Morena.
 
 [![Code Health](https://landscape.io/github/Riverfount/wttd/master/landscape.svg?style=flat)](https://landscape.io/github/Riverfount/wttd/master)
 [![Build Status](https://travis-ci.org/Riverfount/wttd.svg?branch=master)](https://travis-ci.org/Riverfount/wttd)
-[![Code Health](https://landscape.io/github/Riverfount/wttd/master/landscape.svg?style=flat)](https://landscape.io/github/Riverfount/wttd/master)
 [![Updates](https://pyup.io/repos/github/Riverfount/wttd/shield.svg)](https://pyup.io/repos/github/Riverfount/wttd/)
 
 
