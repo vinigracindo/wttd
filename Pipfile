@@ -26,6 +26,7 @@ coveralls = "*"
 django-rainbowtests = "*"
 rollbar = "*"
 pytest-django = "*"
+pytest-cov = "*"
 
 [requires]
 python_version = "3.7"
