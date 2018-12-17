@@ -27,6 +27,7 @@ django-rainbowtests = "*"
 rollbar = "*"
 pytest-django = "*"
 pytest-cov = "*"
+pytest-sugar = "*"
 
 [requires]
 python_version = "3.7"
