@@ -5,7 +5,6 @@ name = "pypi"
 
 [packages]
 "django-s3-folder-storage" = "*"
-"psycopg2" = "*"
 Collectfast = "*"
 dj-database-url = "*"
 dj-static = "*"
@@ -17,6 +16,7 @@ gunicorn = "*"
 python-dateutil = "*"
 python-decouple = "*"
 raven = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 "flake8" = "*"
